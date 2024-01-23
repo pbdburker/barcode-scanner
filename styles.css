@@ -1,0 +1,18 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#scanner-container {
+    text-align: center;
+    margin: 50px;
+}
+
+#barcode-input {
+    padding: 5px;
+}
+
+button {
+    padding: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+}
