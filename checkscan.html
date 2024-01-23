@@ -4,41 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barcode Scanner</title>
-    <style>
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-
-        #scanner-container {
-            text-align: center;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        #barcode-input {
-            padding: 8px;
-            margin-top: 10px;
-        }
-
-        #result {
-            margin-top: 10px;
-            font-weight: bold;
-            padding: 8px;
-            border-radius: 4px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Include your CSS file if you have one -->
 </head>
 <body>
     <div id="scanner-container">
         <label for="barcode-input">Scan Barcode:</label>
-        <input type="text" id="barcode-input" oninput="checkItem()" autofocus>
+        <!-- Use onkeydown to trigger the checkItem function only when the Enter key is pressed -->
+        <input type="text" id="barcode-input" onkeydown="if (event.key === 'Enter') checkItem()" autofocus>
         <p id="result"></p>
     </div>
     <script>
@@ -339,6 +311,7 @@
     {"barcode": "23.9937-3"},
         ];
 
+
         // Main function to check the scanned item
         function checkItem() {
             // Get the scanned barcode from the input field
@@ -346,14 +319,11 @@
 
             // Check if the scanned barcode is in the list
             var foundItem = itemList.find(item => item.barcode === barcode);
-            var resultElement = document.getElementById('result');
 
             if (foundItem) {
-                resultElement.innerText = 'Yes, the item is in the list.';
-                resultElement.style.backgroundColor = '#8BC34A'; // Green background color
+                document.getElementById('result').innerText = 'Yes, the item is in the list.';
             } else {
-                resultElement.innerText = 'No, the item is not in the list.';
-                resultElement.style.backgroundColor = '#FF5733'; // Red background color
+                document.getElementById('result').innerText = 'No, the item is not in the list.';
             }
         }
 
