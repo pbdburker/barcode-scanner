@@ -6,6 +6,8 @@ function fetchItems() {
         .catch(error => {
             console.error('Error loading items:', error);
             throw error; // Rethrow the error for better handling
+});
+
         });
 }
 
