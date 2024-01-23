@@ -6,10 +6,9 @@ function fetchItems() {
         .catch(error => {
             console.error('Error loading items:', error);
             throw error; // Rethrow the error for better handling
-});
-
         });
 }
+
 
 // Main function to check the scanned item
 async function checkItem() {
