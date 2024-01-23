@@ -42,7 +42,7 @@
             max-height: 250px;
             overflow-y: auto;
             overflow-x: hidden;
-            text-align: left;
+            text-align: center;
         }
 
         #previous-scans {
@@ -82,11 +82,11 @@
         <label for="barcode-input">Scan Barcode:</label>
         <input type="text" id="barcode-input" onkeydown="handleKeyDown(event)" autofocus>
         <p id="result"></p>
-        <div id="previous-scans-container">
-            <div id="previous-scans"></div>
-        </div>
-        <div id="version">Version 1.0</div>
     </div>
+    <div id="previous-scans-container">
+        <div id="previous-scans"></div>
+    </div>
+    <div id="version">Version 1.1</div>
     <script>
         // Define your list of items
         const itemList = [
