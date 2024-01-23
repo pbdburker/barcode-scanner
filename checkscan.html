@@ -12,6 +12,7 @@
             height: 100vh;
             margin: 0;
             background-color: #f0f0f0;
+            font-family: Calibri, sans-serif;
         }
 
         #scanner-container {
@@ -20,11 +21,13 @@
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
         }
 
         #barcode-input {
             padding: 8px;
             margin-top: 10px;
+            width: 100%;
         }
 
         #result {
@@ -39,27 +42,33 @@
             max-height: 250px;
             overflow-y: auto;
             overflow-x: hidden;
+            text-align: left;
         }
 
         #previous-scans {
             display: flex;
             flex-direction: column;
             gap: 10px;
+            align-items: center;
         }
 
         .scan-item {
             padding: 8px;
             border-radius: 4px;
-            text-align: left;
             font-weight: bold;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
         }
 
         .scan-yes {
             background-color: #8BC34A; /* Green */
+            color: #ffffff; /* White text for better visibility */
         }
 
         .scan-no {
             background-color: #FF5733; /* Red */
+            color: #ffffff; /* White text for better visibility */
         }
     </style>
 </head>
@@ -75,6 +84,7 @@
     <script>
         // Define your list of items
         const itemList = [
+    {"barcode": "23.08017-9"},
     {"barcode": "23.23056-7"},
     {"barcode": "23.10488-2"},
     {"barcode": "23.13717-0"},
@@ -369,7 +379,6 @@
     {"barcode": "23.854-6"},
     {"barcode": "23.9937-3"},
         ];
-
         // Array to store previous scans
         const previousScans = [];
 
