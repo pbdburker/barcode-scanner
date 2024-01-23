@@ -70,6 +70,11 @@
             background-color: #FF5733; /* Red */
             color: #ffffff; /* White text for better visibility */
         }
+
+        #version {
+            margin-top: 20px;
+            color: #777777;
+        }
     </style>
 </head>
 <body>
@@ -80,6 +85,7 @@
         <div id="previous-scans-container">
             <div id="previous-scans"></div>
         </div>
+        <div id="version">Version 1.0</div>
     </div>
     <script>
         // Define your list of items
@@ -379,6 +385,7 @@
     {"barcode": "23.854-6"},
     {"barcode": "23.9937-3"},
         ];
+
         // Array to store previous scans
         const previousScans = [];
 
