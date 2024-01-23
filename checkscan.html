@@ -4,7 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barcode Scanner</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Include your CSS file if you have one -->
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        #scanner-container {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #barcode-input {
+            padding: 8px;
+            margin-top: 10px;
+        }
+
+        #result {
+            margin-top: 10px;
+            font-weight: bold;
+            padding: 8px;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
     <div id="scanner-container">
@@ -317,11 +346,14 @@
 
             // Check if the scanned barcode is in the list
             var foundItem = itemList.find(item => item.barcode === barcode);
+            var resultElement = document.getElementById('result');
 
             if (foundItem) {
-                document.getElementById('result').innerText = 'Yes, the item is in the list.';
+                resultElement.innerText = 'Yes, the item is in the list.';
+                resultElement.style.backgroundColor = '#8BC34A'; // Green background color
             } else {
-                document.getElementById('result').innerText = 'No, the item is not in the list.';
+                resultElement.innerText = 'No, the item is not in the list.';
+                resultElement.style.backgroundColor = '#FF5733'; // Red background color
             }
         }
 
