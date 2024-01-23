@@ -9,9 +9,16 @@
 <body>
     <div id="scanner-container">
         <label for="barcode-input">Scan Barcode:</label>
-        <input type="text" id="barcode-input" oninput="checkItem()" autofocus>
+        <input type="text" id="barcode-input" onkeydown="handleKeyPress(event)" autofocus>
         <p id="result"></p>
     </div>
     <script src="scanner.js"></script>
+    <script>
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                checkItem();
+            }
+        }
+    </script>
 </body>
 </html>
