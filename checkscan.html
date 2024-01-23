@@ -33,6 +33,10 @@
             padding: 8px;
             border-radius: 4px;
         }
+
+        #previous-scans {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -40,6 +44,7 @@
         <label for="barcode-input">Scan Barcode:</label>
         <input type="text" id="barcode-input" oninput="checkItem()" autofocus>
         <p id="result"></p>
+        <ul id="previous-scans"></ul>
     </div>
     <script>
         // Define your list of items
@@ -339,6 +344,9 @@
     {"barcode": "23.9937-3"},
         ];
 
+        // Array to store previous scans
+        const previousScans = [];
+
         // Main function to check the scanned item
         function checkItem() {
             // Get the scanned barcode from the input field
@@ -348,6 +356,16 @@
             var foundItem = itemList.find(item => item.barcode === barcode);
             var resultElement = document.getElementById('result');
 
+            // Create a new entry for the previous scans list
+            const scanResult = {
+                barcode: barcode,
+                found: foundItem !== undefined
+            };
+
+            // Add the scan result to the previous scans array
+            previousScans.push(scanResult);
+
+            // Update the result paragraph
             if (foundItem) {
                 resultElement.innerText = 'Yes, the item is in the list.';
                 resultElement.style.backgroundColor = '#8BC34A'; // Green background color
@@ -355,6 +373,25 @@
                 resultElement.innerText = 'No, the item is not in the list.';
                 resultElement.style.backgroundColor = '#FF5733'; // Red background color
             }
+
+            // Clear the input field for the next scan
+            document.getElementById('barcode-input').value = '';
+
+            // Update the previous scans list
+            updatePreviousScansList();
+        }
+
+        // Function to update the previous scans list
+        function updatePreviousScansList() {
+            const previousScansList = document.getElementById('previous-scans');
+            previousScansList.innerHTML = ''; // Clear the previous scans list
+
+            // Iterate through previous scans and create list items
+            previousScans.forEach(scan => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `Barcode: ${scan.barcode}, Result: ${scan.found ? 'Yes' : 'No'}`;
+                previousScansList.appendChild(listItem);
+            });
         }
 
         // Optional: If you want to automatically focus on the barcode input field on page load
