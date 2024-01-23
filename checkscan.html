@@ -12,8 +12,20 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
             font-family: Calibri, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Light mode theme */
+        body.light-mode {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        /* Dark mode theme */
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
         }
 
         #scanner-container {
@@ -22,6 +34,7 @@
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
         }
 
         #barcode-input {
@@ -41,7 +54,7 @@
             max-height: 250px;
             overflow-y: auto;
             overflow-x: hidden;
-            text-align: center;
+            text-align: left;
         }
 
         #previous-scans {
@@ -69,10 +82,16 @@
             font-size: 14px;
             color: #555;
         }
+
+        #dark-mode-toggle {
+            margin-top: 10px;
+            cursor: pointer;
+            color: #555;
+        }
     </style>
 </head>
 
-<body>
+<body class="light-mode">
     <div id="scanner-container">
         <label for="barcode-input">Scan Barcode:</label>
         <input type="text" id="barcode-input" onkeydown="handleKeyDown(event)" autofocus>
@@ -80,6 +99,7 @@
         <div id="previous-scans-container">
             <div id="previous-scans"></div>
         </div>
+        <div id="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</div>
         <div id="version">Version 1.1</div>
     </div>
     <script>
@@ -438,6 +458,12 @@
                 listItem.textContent = `${scan.barcode}`;
                 previousScansList.appendChild(listItem);
             });
+        }
+
+        // Function to toggle dark mode
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
         }
 
         // Optional: If you want to automatically focus on the barcode input field on page load
