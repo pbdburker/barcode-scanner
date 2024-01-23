@@ -60,7 +60,7 @@
 <body>
     <div id="scanner-container">
         <label for="barcode-input">Scan Barcode:</label>
-        <input type="text" id="barcode-input" oninput="checkItem()" onkeydown="handleEnter(event)" autofocus>
+        <input type="text" id="barcode-input" onkeydown="handleKeyDown(event)" autofocus>
         <p id="result"></p>
         <div id="previous-scans"></div>
     </div>
@@ -400,7 +400,7 @@
         }
 
         // Function to handle Enter key press in the barcode input field
-        function handleEnter(event) {
+        function handleKeyDown(event) {
             if (event.key === 'Enter') {
                 event.preventDefault(); // Prevent form submission
                 checkItem();
