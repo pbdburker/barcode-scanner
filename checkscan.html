@@ -31,10 +31,13 @@
         #scanner-container {
             text-align: center;
             padding: 20px;
-            background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s;
+        }
+
+        #scanner-container.light-mode {
+            background-color: #ffffff;
         }
 
         #barcode-input {
@@ -100,7 +103,7 @@
             <div id="previous-scans"></div>
         </div>
         <div id="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</div>
-        <div id="version">Version 1.2</div>
+        <div id="version">Version 1.3</div>
     </div>
     <script>
         // Define your list of items
