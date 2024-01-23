@@ -40,9 +40,22 @@
             background-color: #ffffff;
         }
 
+        #scanner-container.dark-mode {
+            background-color: #464646; /* Slightly lighter shade of dark gray */
+        }
+
         #barcode-input {
             padding: 8px;
             margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        #barcode-input.light-mode {
+            background-color: #ffffff;
+        }
+
+        #barcode-input.dark-mode {
+            background-color: #585858; /* Slightly lighter shade of dark gray */
         }
 
         #result {
@@ -103,7 +116,7 @@
             <div id="previous-scans"></div>
         </div>
         <div id="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</div>
-        <div id="version">Version 1.3</div>
+        <div id="version">Version 1.4</div>
     </div>
     <script>
         // Define your list of items
@@ -467,8 +480,11 @@
         function toggleDarkMode() {
             const body = document.body;
             const scannerContainer = document.getElementById('scanner-container');
+            const barcodeInput = document.getElementById('barcode-input');
+
             body.classList.toggle('dark-mode');
             scannerContainer.classList.toggle('dark-mode');
+            barcodeInput.classList.toggle('dark-mode');
         }
 
         // Optional: If you want to automatically focus on the barcode input field on page load
