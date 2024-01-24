@@ -128,9 +128,10 @@
             <div id="previous-scans"></div>
         </div>
         <div id="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</div>
-        <div id="version">Version 1.6</div>
+        <div id="version">Version 1.4</div>
     </div>
     <script>
+        // Define your list of items
         // Define your list of items
         const itemList = [
     {"barcode": "23.08017-9"},
@@ -429,6 +430,7 @@
     {"barcode": "23.9937-3"},
         ];
 
+
         // Array to store previous scans
         const previousScans = [];
 
@@ -454,9 +456,11 @@
             if (foundItem) {
                 resultElement.innerText = 'Yes, the item is in the list.';
                 resultElement.style.backgroundColor = '#8BC34A'; // Green background color
+                playSuccessSound(); // Play success sound
             } else {
                 resultElement.innerText = 'No, the item is not in the list.';
                 resultElement.style.backgroundColor = '#FF5733'; // Red background color
+                playWrongSound(); // Play wrong sound
             }
 
             // Clear the input field for the next scan
@@ -464,6 +468,18 @@
 
             // Update the previous scans list
             updatePreviousScansList();
+        }
+
+        // Function to play success sound
+        function playSuccessSound() {
+            var successSound = new Audio('success.mp3'); // Create a new Audio element
+            successSound.play();
+        }
+
+        // Function to play wrong sound
+        function playWrongSound() {
+            var wrongSound = new Audio('wrong.mp3'); // Create a new Audio element
+            wrongSound.play();
         }
 
         // Function to handle Enter key press in the barcode input field
